@@ -6,6 +6,7 @@ import {
   useInitData,
   DisplayGate,
 } from '@tma.js/sdk-react';
+import { MainList } from './MainList'
 
 function MainButton() {
   const mb = useMainButton();
@@ -119,8 +120,7 @@ export function Root() {
         loading={SDKProviderLoading}
         initial={SDKInitialState}
       >
-        <MainButton/>
-        <InitData/>
+        <MainList />
       </DisplayGate>
     </SDKProvider>
   );
