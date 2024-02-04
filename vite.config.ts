@@ -12,11 +12,7 @@ function getServerOptions(): ServerOptions {
 
   return {
     port: 8443,
-    https: {
-      cert: readFileSync(resolve(dir, './https-cert.pem')),
-      key: readFileSync(resolve(dir, './https-key.pem')),
-    },
-    host: 'local.darkhole.space',
+    host: '0.0.0.0',
   };
 }
 
