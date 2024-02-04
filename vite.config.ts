@@ -11,12 +11,12 @@ function getServerOptions(): ServerOptions {
   const dir = dirname(fileURLToPath(import.meta.url));
 
   return {
-    port: 443,
+    port: 8443,
     https: {
       cert: readFileSync(resolve(dir, './https-cert.pem')),
       key: readFileSync(resolve(dir, './https-key.pem')),
     },
-    host: 'tma.internal',
+    host: 'local.darkhole.space',
   };
 }
 
