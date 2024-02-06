@@ -1,8 +1,7 @@
-export function MainList() {
+export function MainList({ onClick }: { onClick: (current: string) => void}) {
     return (
         <div className='mainlist'>
-            <button>Некий список слов</button>
-            <button>Одминка</button>
+            <button onClick={_ => onClick('haruno')}>Некий список слов</button>
         </div>
     )
 }

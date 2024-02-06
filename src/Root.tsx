@@ -7,6 +7,7 @@ import {
   DisplayGate,
 } from '@tma.js/sdk-react';
 import { MainList } from './MainList'
+import { Haruno } from './Haruno'
 
 function MainButton() {
   const mb = useMainButton();
@@ -113,6 +114,20 @@ function SDKInitialState() {
  * Root component of the whole project.
  */
 export function Root() {
+  let [current, setCurrent] = useState('');
+  let [currentComponent, setCurrentComponent] = useState(() => (<MainList onClick={setCurrent} />));
+
+  useEffect(() => {
+    switch(current) {
+      case 'haruno':
+        setCurrentComponent(<Haruno onClick={setCurrent} />)
+        break
+      default:
+        setCurrentComponent(<MainList onClick={setCurrent} />)
+        break
+    }
+  }, [current])
+
   return (
     <SDKProvider options={{ acceptCustomStyles: true, cssVars: true, async: true }}>
       <DisplayGate
@@ -120,7 +135,7 @@ export function Root() {
         loading={SDKProviderLoading}
         initial={SDKInitialState}
       >
-        <MainList />
+        { currentComponent }
       </DisplayGate>
     </SDKProvider>
   );
